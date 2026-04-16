@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Healthy Eats Feedback Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">Healthy Eats</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="feedback.html">Feedback Form</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="form-container">
+        <h2>Website Feedback</h2>
+
+        <form>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label>Rate our website</label>
+
+            <div class="star-rating">
+                <span class="fa fa-star" data-value="1"></span>
+                <span class="fa fa-star" data-value="2"></span>
+                <span class="fa fa-star" data-value="3"></span>
+                <span class="fa fa-star" data-value="4"></span>
+                <span class="fa fa-star" data-value="5"></span>
+            </div>
+
+            <input type="hidden" name="rating" id="rating-value">
+
+            <div>
+                <label>Enter Phone number</label>
+                <input type="number" id="phone"/>
+            </div>
+
+            <label for="suggestions">What can we improve</label>
+            <textarea id="suggestions" name="suggestions" rows="4"></textarea>
+
+            <div class="buttons">
+                <button onclick="fun1()">Submit</button>
+                <script>
+                    function fun1()
+                    {
+                        const val = document.getElementById("phone").value;
+                        if(val>=1000000000 && val<=9999999999)
+                            ;
+                        else    
+                            alert("Invalid phone number, input again");
+                    }
+
+                    const stars = document.querySelectorAll(".star-rating .fa-star");
+                    const ratingValue = document.getElementById("rating-value");
+
+                    stars.forEach((star,index)=>{
+                        star.addEventListener("click",()=>{
+                            let rating=index+1;
+                            ratingValue.value=rating;
+
+                            stars.forEach(s=>s.classList.remove("active"));
+
+                            for(let i=0;i<rating;i++){
+                                stars[i].classList.add("active");
+                            }
+                        });
+                    });
+                </script>
+                <input type="reset" value="Clear">
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>

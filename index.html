@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <title>Home | Healthy Eats</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<script>
+function logout()
+{
+    alert("You have been logged out successfully.");
+    window.location.href="login.html";
+}
+</script>
+<body>
+    <header>
+        <div class="logo">Healthy Eats</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="feedback.html">Feedback Form</a></li>
+            </ul>
+        </nav>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </header>
+
+    <section class="hero">
+        <h1>Home delivered Healthy, Fresh food </h1>
+        <p>Making healthy food available to everyone.</p>
+        <a href="menu.html" class="btn">Order Now</a>
+    </section>
+
+    <section class="container">
+        <h2>Why Choose Us?</h2>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <h3>Fresh and chemical free Ingredients</h3>
+                <p>We only use the best quality produce.</p>
+            </div>
+            <div class="menu-item">
+                <h3>Quick Delivery</h3>
+                <p>Food at your door in 30 mins.</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

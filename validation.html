@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Validation</title>
+</head>
+
+<body>
+    <input type="checkbox" id="agree"/>
+    <label>I agree to the terms and conditions</label>
+    <br>
+    <input type="submit" id="submit" onclick="terms()">
+    <script>
+        function terms()
+        {
+            const checkbox = document.getElementById("agree").value;
+                if(agree.checked)
+                    alert("Submitted");
+                else    
+                    alert("Please accept terms and conditions");
+        }
+    </script>
+</body>
+</html>

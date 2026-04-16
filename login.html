@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login | Healthy Eats</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="generateCaptcha()">
+
+<header>
+    <div class="logo">Healthy Eats</div>
+</header>
+
+<div class="form-container">
+    <h2>User Login</h2>
+
+    <form onsubmit="return validateLogin()">
+
+        <label>Full Name</label>
+        <input type="text" id="name" placeholder="Enter your name">
+
+        <label>Mobile Number</label>
+        <input type="number" id="mobile" placeholder="Enter 10 digit mobile number">
+
+        <label>Email ID</label>
+        <input type="text" id="email" placeholder="Enter your email">
+
+        <label>Enter CAPTCHA</label>
+
+        <div style="display:flex; gap:10px; align-items:center; margin-top:5px;">
+            <input type="text" id="captchaBox" readonly style="width:120px; font-weight:bold; text-align:center;">
+            <button type="button" onclick="generateCaptcha()">↻</button>
+        </div>
+
+        <input type="text" id="captchaInput" placeholder="Enter captcha shown above">
+
+        <div class="buttons">
+            <button type="submit">Login</button>
+        </div>
+
+    </form>
+</div>
+
+<script>
+
+function generateCaptcha()
+{
+    let chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let captcha = "";
+
+    for(let i=0;i<5;i++)
+    {
+        captcha += chars.charAt(Math.floor(Math.random()*chars.length));
+    }
+
+    document.getElementById("captchaBox").value = captcha;
+}
+
+function validateLogin()
+{
+    let name = document.getElementById("name").value.trim();
+    let mobile = document.getElementById("mobile").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let captcha = document.getElementById("captchaBox").value;
+    let userCaptcha = document.getElementById("captchaInput").value;
+
+    let namePattern = /^[A-Za-z\s]+$/;
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if(name=="" || mobile=="" || email=="" || userCaptcha=="")
+    {
+        alert("All fields are required!");
+        return false;
+    }
+
+    if(!namePattern.test(name))
+    {
+        alert("Name should contain only letters.");
+        return false;
+    }
+
+    if(mobile.length!=10 || isNaN(mobile))
+    {
+        alert("Mobile number must be 10 digits.");
+        return false;
+    }
+
+    if(!emailPattern.test(email))
+    {
+        alert("Invalid Email ID.");
+        return false;
+    }
+
+    if(userCaptcha != captcha)
+    {
+        alert("Incorrect CAPTCHA. Try again.");
+        generateCaptcha();
+        return false;
+    }
+
+    alert("Login Successful!");
+    window.location.href="welcome.html";
+
+    return false;
+}
+
+</script>
+
+</body>
+</html>
